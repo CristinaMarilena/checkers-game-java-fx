@@ -53,7 +53,7 @@ _GameBoard_ class populates the gameboard with the necessary pawns and executes 
 _GameSearch_ class implements the most primitive algorithm ever invented( :) ) that returns a list of all the pawns that have accessible moves on the board, no matter the player or the selected pawn.
 We mainly need that for presenting the status of the game.
 
-The status of the game is displayed in the console before every supposed move of a pwan.
+The status of the game is displayed in the console before every supposed move of a pawn
 
 ## Running
 
