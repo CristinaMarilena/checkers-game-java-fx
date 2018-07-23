@@ -27,38 +27,37 @@ In most cases, this is because all of the opponent's pieces have been captured.
 
 ## Technology
 
-The application is implemented in JavaFx.
+The application is implemented in JavaFX.
 
 ## Implementation
 
 The _Main_ class of the application is CheckersApp that extends Application from JavaFX.
-The main purpose of the class is to load all of the UI resources
-including the gameboard and the minimal menu.
+The main purpose of the class is to load all of the UI resources including the gameboard and the minimal menu.
 
-_BoardSquare_ class represents a black or white square on the gameboard that may have or not a
-pawn on it.
+_BoardSquare_ class represents a black or white square on the gameboard that may have or not a pawn on it.
 
-_GameBoard_ class populates the gameboard with the necessary pawns
- and executes all the valid moves when each and every players'r turn comes.
+_GameBoard_ class populates the gameboard with the necessary pawns and executes all the valid moves when each and every players'r turn comes.
  
  _Pawn_ and _Move_ are simple java models that represent the piece of the game and it's specific move.
  
- _PawnType_ and _MoveType_ are java enumerations to represent different kind of pawns(RED_PAWN, WHITE_PAWN,
- RED_KING, WHITE_KING) and moves(INVALID, STEP, JUMP).
+ _PawnType_ and _MoveType_ are java enumerations to represent different kind of pawns(RED_PAWN, WHITE_PAWN, RED_KING, WHITE_KING) and moves(INVALID, STEP, JUMP).
  
- The main difference beetwen the simple red and white pawn is the direction of the movements 
- on the gameboard. 
+ The main difference beetwen the simple red and white pawn is the direction of the movements on the gameboard. 
  
  As for the moves:
  
-* INVALID moves means that the piece is trying to be moved in an inaccessible location
-          or the player doesn't have a right to.
-* STEP is non-capturing move.
+* INVALID move means that the piece is trying to be moved in an inaccessible location or the player doesn't have a right to.
+* STEP is a non-capturing move.
 * JUMP is the move where a playes captures the other player's pawn.
 
-_GameSearch_ class implements the most primitive algorithm ever invented( :) ) 
-that returns a list of all the pawns that have accessible moves on the board, no matter the player ol the selected pawn.
+_GameSearch_ class implements the most primitive algorithm ever invented( :) ) that returns a list of all the pawns that have accessible moves on the board, no matter the player or the selected pawn.
 We mainly need that for presenting the status of the game.
+
+The status of the game is displayed in the console before every supposed move of a pwan.
+
+## Running
+
+Because it's a javaFX application, running it is very simple, just run the CheckersApp class.
 
 ## Things to be implemented
 
