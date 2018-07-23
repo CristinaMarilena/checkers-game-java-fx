@@ -2,16 +2,12 @@ package example.model;
 
 
 import javafx.scene.Group;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.paint.Paint;
-import javafx.scene.text.Text;
 
 import java.util.LinkedList;
 
 import static example.model.Util.toMatrixPosition;
-import static example.ui.CheckersApp.*;
+import static example.ui.CheckersApp.HEIGHT;
+import static example.ui.CheckersApp.WIDTH;
 
 /**
  * GameBoard class is created to memorize the locations of the pawns and kings before and after every move of a player
