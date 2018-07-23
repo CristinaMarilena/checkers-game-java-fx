@@ -1,4 +1,4 @@
-# CapleCheckers
+# Checkers
 
 ## Game Basics
 
@@ -67,3 +67,6 @@ We mainly need that for presenting the status of the game.
 * Present the player the possible moves for the selected pawn.
 * Not ending a player's turn until he does all the possible jumps.
 * Make a king combine jumps in different directions.
+
+![screenshot from 2018-07-23 05-50-05](https://user-images.githubusercontent.com/23499989/43054918-7fbad950-8e3c-11e8-9d60-b358354dacdd.png)
+
