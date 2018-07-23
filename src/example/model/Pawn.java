@@ -5,6 +5,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 
+import static example.model.Util.toMatrixPosition;
+import static example.ui.CheckersApp.SQUARE_SIZE;
+
 /**
  * A stackpane's parent will resize the stackpane within the stackpane's resizable range during layout.
  * By default the stackpane computes this range based on its content as outlined in the table below.
@@ -13,9 +16,6 @@ import javafx.scene.layout.StackPane;
  * A Pawn extends StackPane
  * A pawn has a pawn type, coordinates and specific image
  */
-import static example.model.Util.toMatrixPosition;
-import static example.ui.CheckersApp.SQUARE_SIZE;
-
 public class Pawn extends StackPane {
 
     private PawnType type;

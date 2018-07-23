@@ -163,15 +163,12 @@ public class GameBoard {
         //for a jump, the move memorises the pawn the is trying to pe jumped over
         if (pawn.getType().equals(PawnType.RED_PAWN) || pawn.getType().equals(PawnType.WHITE_PAWN)
                 ? pawnStepCondition : kingStepCondition) {
-
             return new Move(MoveType.STEP);
-
         } else if (pawn.getType().equals(PawnType.RED_KING) || pawn.getType().equals(PawnType.WHITE_KING)
                 ? kingJumpCondition : pawnJumpCondition) {
-            if (gameboard[jumpedOverPawnX][jumpedOverPawnY].hasPawn() && gameboard[jumpedOverPawnX][jumpedOverPawnY].getPawn().getType() != pawn.getType()) {
-
+            if (gameboard[jumpedOverPawnX][jumpedOverPawnY].hasPawn() &&
+                    gameboard[jumpedOverPawnX][jumpedOverPawnY].getPawn().getType() != pawn.getType()) {
                 return new Move(MoveType.JUMP, gameboard[jumpedOverPawnX][jumpedOverPawnY].getPawn());
-
             }
         }
         return new Move(MoveType.INVALID);
@@ -289,5 +286,4 @@ public class GameBoard {
 
         whiteTurn = !whiteTurn;
     }
-
 }

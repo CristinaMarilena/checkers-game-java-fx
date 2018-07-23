@@ -20,7 +20,6 @@ public class CheckersApp extends Application {
     public static final String WHITE_PAWN = "/whitepawn_50x50.png";
     public static final String RED_KING = "/redking.png";
     public static final String WHITE_KING = "/whiteking.png";
-    public static final String STATUS_BACK = "/statusBack.png";
     public static final int SQUARE_SIZE = 80;
 
     private Group boardSquaresGroup;
@@ -35,7 +34,6 @@ public class CheckersApp extends Application {
         boardSquaresGroup = new Group();
         pieceGroup = new Group();
         gameBoard = new GameBoard();
-
         boardSquaresGroup.setLayoutY(30);
         pieceGroup.setLayoutY(30);
 

@@ -1,7 +1,6 @@
 package example.model;
 
 public enum PawnType {
-
     RED_PAWN(1), WHITE_PAWN(-1), RED_KING, WHITE_KING;
 
     public final int pawnWay;

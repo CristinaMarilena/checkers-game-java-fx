@@ -1,8 +1,5 @@
 package example.model;
 
-/**
- * Move model that has a type and a pawn
- */
 public class Move {
 
     private MoveType type;
