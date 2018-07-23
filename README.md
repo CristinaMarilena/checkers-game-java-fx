@@ -36,7 +36,7 @@ The main purpose of the class is to load all of the UI resources including the g
 
 _BoardSquare_ class represents a black or white square on the gameboard that may have or not a pawn on it.
 
-_GameBoard_ class populates the gameboard with the necessary pawns and executes all the valid moves when each and every players'r turn comes.
+_GameBoard_ class populates the gameboard with the necessary pawns and executes all the valid moves when each and every player's turn comes.
  
  _Pawn_ and _Move_ are simple java models that represent the piece of the game and it's specific move.
  
@@ -50,7 +50,7 @@ _GameBoard_ class populates the gameboard with the necessary pawns and executes 
 * STEP is a non-capturing move. A king has the right to do it in every direction.
 * JUMP is the move where a playes captures the other player's pawn.A king has the right to do it in every direction.
 
-_GameSearch_ class implements the most primitive algorithm ever invented( :) ) that returns a list of all the pawns that have accessible moves on the board, no matter the player or the selected pawn.
+_GameSearch_ class implements the most primitive algorithm ever invented( :flushed: ) that returns a list of all the pawns that have accessible moves on the board, no matter the player or the selected pawn.
 We mainly need that for presenting the status of the game.
 
 The status of the game is displayed in the console before every supposed move of a pawn
@@ -66,6 +66,8 @@ Because it's a javaFX application, running it is very simple, just run the Check
 * Present the player the possible moves for the selected pawn.
 * Not ending a player's turn until he does all the possible jumps.
 * Make a king combine jumps in different directions in the same turn.
+
+
 
 ![screenshot from 2018-07-23 05-50-05](https://user-images.githubusercontent.com/23499989/43054918-7fbad950-8e3c-11e8-9d60-b358354dacdd.png)
 
