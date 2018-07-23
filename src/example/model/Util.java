@@ -12,5 +12,4 @@ public class Util {
     static int toMatrixPosition(double pixel) {
         return (int) (pixel + SQUARE_SIZE / 2) / SQUARE_SIZE;
     }
-
 }

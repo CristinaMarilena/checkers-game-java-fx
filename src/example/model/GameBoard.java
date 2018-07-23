@@ -40,7 +40,6 @@ public class GameBoard {
      * @param pawnsGroup       represent the javaFX group layered on boardSquareGroup that keeps and displays the pawns of the game
      */
     public void populateBoard(Group boardSquareGroup, Group pawnsGroup) {
-
         for (int y = 0; y < HEIGHT; y++) {
             for (int x = 0; x < WIDTH; x++) {
 
@@ -143,7 +142,6 @@ public class GameBoard {
      */
 
     private Move getPossibleMoveForPiece(Pawn pawn, int newX, int newY) {
-
         if ((newX + newY) % 2 != 0 || gameboard[newX][newY].hasPawn() || whitePawnsLeft == 0 || redPawnsLeft == 0) {
             return new Move(MoveType.INVALID);
         }
@@ -225,7 +223,6 @@ public class GameBoard {
      * @param initialYPosition
      */
     private void step(Pawn pawn, int newX, int newY, int initialXPosition, int initialYPosition){
-
         if (pawn.isRedKing(newY)) {
             pawn.makePawnKing("RED_PAWN");
         }
@@ -254,7 +251,6 @@ public class GameBoard {
      * @param pawnGroup
      */
     private void jump(Pawn pawn, int newX, int newY, int initialXPosition, int initialYPosition, Move move, Group pawnGroup){
-
         if (pawn.isRedKing(newY)) {
             pawn.makePawnKing("RED_PAWN");
             System.out.println("We have a red king!");
