@@ -47,8 +47,8 @@ _GameBoard_ class populates the gameboard with the necessary pawns and executes 
  As for the moves:
  
 * INVALID move means that the piece is trying to be moved in an inaccessible location or the player doesn't have a right to.
-* STEP is a non-capturing move.
-* JUMP is the move where a playes captures the other player's pawn.
+* STEP is a non-capturing move. A king has the right to do it in every direction.
+* JUMP is the move where a playes captures the other player's pawn.A king has the right to do it in every direction.
 
 _GameSearch_ class implements the most primitive algorithm ever invented( :) ) that returns a list of all the pawns that have accessible moves on the board, no matter the player or the selected pawn.
 We mainly need that for presenting the status of the game.
@@ -62,10 +62,10 @@ Because it's a javaFX application, running it is very simple, just run the Check
 ## Things to be implemented
 
 * Unit Tests
-* Making a player to execute a jump if it is available.
+* Make a player to execute a jump if it is available.
 * Present the player the possible moves for the selected pawn.
 * Not ending a player's turn until he does all the possible jumps.
-* Make a king combine jumps in different directions.
+* Make a king combine jumps in different directions in the same turn.
 
 ![screenshot from 2018-07-23 05-50-05](https://user-images.githubusercontent.com/23499989/43054918-7fbad950-8e3c-11e8-9d60-b358354dacdd.png)
 
