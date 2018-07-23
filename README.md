@@ -3,7 +3,7 @@
 ## Game Basics
 
 Checkers is played by two players. Each player begins the game with 12 colored discs.
-In our game, one piece is white and the other is black. 
+In our game, one piece is white and the other is red. 
 Each player places his or her pieces on the 12 dark squares closest to him or her. 
 White moves first. Players then alternate moves.
 

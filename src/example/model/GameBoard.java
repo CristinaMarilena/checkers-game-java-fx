@@ -108,7 +108,7 @@ public class GameBoard {
 
             //failed attempt in trying to make the player do a jump if any is available
             String player = pawn.getType().equals(PawnType.RED_PAWN) || pawn.getType().equals(PawnType.RED_KING) ? "RED" : "WHITE";
-            System.out.println("Possible moves for player " + pawn.getType());
+            System.out.println("Possible movable pawns for player " + pawn.getType());
             possibleMoves.forEach(possMove -> {
 
                 if (player.equals("RED") && (possMove.getPawn().getType().equals(PawnType.RED_PAWN) ||
@@ -144,7 +144,7 @@ public class GameBoard {
 
     private Move getPossibleMoveForPiece(Pawn pawn, int newX, int newY) {
 
-        if ((newX + newY) % 2 != 0 || gameboard[newX][newY].hasPawn()) {
+        if ((newX + newY) % 2 != 0 || gameboard[newX][newY].hasPawn() || whitePawnsLeft == 0 || redPawnsLeft == 0) {
             return new Move(MoveType.INVALID);
         }
 
@@ -239,6 +239,9 @@ public class GameBoard {
         gameboard[initialXPosition][initialYPosition].setPawn(null);
         gameboard[newX][newY].setPawn(pawn);
         whiteTurn = !whiteTurn;
+
+        System.out.println("A " + pawn.getType() + " has been moved from [" + initialXPosition + "][" + initialYPosition
+                + "] to [" + newX + "][" + newY + "]");
     }
 
     /**
@@ -257,9 +260,11 @@ public class GameBoard {
 
         if (pawn.isRedKing(newY)) {
             pawn.makePawnKing("RED_PAWN");
+            System.out.println("We have a red king!");
         }
         if (pawn.isWhiteKing(newY)) {
             pawn.makePawnKing("WHITE_PAWN");
+            System.out.println("We have a white king!");
         }
         pawn.move(newX, newY);
         gameboard[initialXPosition][initialYPosition].setPawn(null);
@@ -278,6 +283,9 @@ public class GameBoard {
 
         if (whitePawnsLeft == 0) System.out.println("White wins");
         if (redPawnsLeft == 0) System.out.println("Red wins");
+
+        System.out.println("A " + pawn.getType() + " has jumped from [" + initialXPosition + "][" + initialYPosition
+                + "] to [" + newX + "][" + newY + "]");
 
         whiteTurn = !whiteTurn;
     }

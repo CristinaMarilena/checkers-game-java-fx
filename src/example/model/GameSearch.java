@@ -164,7 +164,6 @@ public class GameSearch {
                 }
             }
         }
-
         return possibleJumpMoves;
     }
 }
