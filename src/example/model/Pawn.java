@@ -8,14 +8,7 @@ import javafx.scene.layout.StackPane;
 import static example.model.Util.toMatrixPosition;
 import static example.ui.CheckersApp.SQUARE_SIZE;
 
-/**
- * A stackpane's parent will resize the stackpane within the stackpane's resizable range during layout.
- * By default the stackpane computes this range based on its content as outlined in the table below.
- * ( javafx.scene.layout Class StackPane official documentation)
- *
- * A Pawn extends StackPane
- * A pawn has a pawn type, coordinates and specific image
- */
+
 public class Pawn extends StackPane {
 
     private PawnType type;
@@ -51,7 +44,7 @@ public class Pawn extends StackPane {
 
         setImageView(imageView);
 
-        setOnMouseDragged(e -> {
+        setOnMouseDragged(e ->{
             relocate(e.getSceneX() - mouseX + oldX, e.getSceneY() - mouseY + oldY);
         });
 
@@ -62,7 +55,7 @@ public class Pawn extends StackPane {
     }
 
     /**
-     * The method that make a pawn a king of it reached a specific line of the gameboard
+     * The method that makes from a pawn a king of it reached a specific line of the gameboard
      * @param color
      */
     public void makePawnKing(String color) {
@@ -91,11 +84,8 @@ public class Pawn extends StackPane {
      * @param imageView
      */
     public void setImageView(ImageView imageView){
-
-        imageView.setX(SQUARE_SIZE * 0.4);
-        imageView.setY(SQUARE_SIZE * 0.4);
-        imageView.setTranslateX((SQUARE_SIZE - SQUARE_SIZE * 0.4 * 2) / 2);
-        imageView.setTranslateY((SQUARE_SIZE - SQUARE_SIZE * 0.4 * 2) / 2);
+        imageView.setTranslateX(16.0);
+        imageView.setTranslateY(16.0);
 
         getChildren().addAll(imageView);
     }

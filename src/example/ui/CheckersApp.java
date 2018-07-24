@@ -48,10 +48,6 @@ public class CheckersApp extends Application {
         primaryStage.show();
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
-
     static MenuBar myMenuBar(Stage primaryStage) {
         MenuBar menuBar = new MenuBar();
         menuBar.prefWidthProperty().bind(primaryStage.widthProperty());

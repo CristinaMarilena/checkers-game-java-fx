@@ -15,7 +15,6 @@ public class BoardSquare extends Rectangle {
     private Pawn pawn;
 
     public BoardSquare(Boolean black, int x, int y) {
-
         super.setWidth(CheckersApp.SQUARE_SIZE);
         super.setHeight(CheckersApp.SQUARE_SIZE);
         super.setFill(black ? Color.BLACK : Color.WHITESMOKE);

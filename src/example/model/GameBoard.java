@@ -36,8 +36,8 @@ public class GameBoard {
      * The first player is the white one
      * Players then alternate moves by changing the whiteTurn value
      *
-     * @param boardSquareGroup represent the javaFX group that keeps and displays the black&white squares of the gameboard
-     * @param pawnsGroup       represent the javaFX group layered on boardSquareGroup that keeps and displays the pawns of the game
+     * @param boardSquareGroup represents the javaFX group that keeps and displays the black&white squares of the gameboard
+     * @param pawnsGroup       represents the javaFX group layered on boardSquareGroup that keeps and displays the pawns of the game
      */
     public void populateBoard(Group boardSquareGroup, Group pawnsGroup) {
         for (int y = 0; y < HEIGHT; y++) {
@@ -102,7 +102,7 @@ public class GameBoard {
                 move = getPossibleMoveForPiece(pawn, newX, newY);
             }
 
-            //this list was created for the whole purpose of determining all the valid moves on the gameboard
+            //this list was created for the whole purpose of determining all movable pawns on the board
             LinkedList<Move> possibleMoves = GameSearch.getAllPossibleMoves(gameboard);
 
             //failed attempt in trying to make the player do a jump if any is available
