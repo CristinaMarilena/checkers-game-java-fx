@@ -77,56 +77,13 @@ public class GameBoard {
      * @param y          initial y location
      * @param pawnsGroup javaFx group that keeps all the pawns no matter the type
      * @return Pawn of a specific type(RED,WHITE) that has associated an setOnMouseReleased action
-     * The setOnMouseReleased defines the implementation behind releasing a pawn on the gameboard
+     * The setOnMouseReleasedImpl defines the implementation behind releasing a pawn on the gameboard
      */
 
     private Pawn pawnFactory(PawnType type, int x, int y, Group pawnsGroup) {
 
         Pawn pawn = new Pawn(type, x, y);
-
-        pawn.setOnMouseReleased(e -> {
-            Move move;
-            isThisAJumpPawn = false;
-            atLeastOneJump = false;
-
-            //new x and y values representing the matrix values, not the pixels
-            int newX = toMatrixPosition(pawn.getLayoutX());
-            int newY = toMatrixPosition(pawn.getLayoutY());
-
-            //if the new position is not 'out' of the gameboard or it is the right player's turn
-            //we are looking for a possible move of the selected pawn and the new position
-            //if otherwise we do not do any valid move
-            if (!yourTurn(pawn) || (newX < 0 || newY < 0 || newX >= WIDTH || newY >= HEIGHT)) {
-                move = new Move(MoveType.INVALID);
-            } else {
-                move = getPossibleMoveForPiece(pawn, newX, newY);
-            }
-
-            //this list was created for the whole purpose of determining all movable pawns on the board
-            LinkedList<Move> possibleMoves = GameSearch.getAllPossibleMoves(gameboard);
-
-            //failed attempt in trying to make the player do a jump if any is available
-            String player = pawn.getType().equals(PawnType.RED_PAWN) || pawn.getType().equals(PawnType.RED_KING) ? "RED" : "WHITE";
-            System.out.println("Possible movable pawns for player " + pawn.getType());
-            possibleMoves.forEach(possMove -> {
-
-                if (player.equals("RED") && (possMove.getPawn().getType().equals(PawnType.RED_PAWN) ||
-                        possMove.getPawn().getType().equals(PawnType.RED_KING))) System.out.println(possMove);
-
-                if (player.equals("WHITE") && (possMove.getPawn().getType().equals(PawnType.WHITE_PAWN) ||
-                        possMove.getPawn().getType().equals(PawnType.WHITE_KING))) System.out.println(possMove);
-
-                if (possMove.getType().equals(MoveType.JUMP) && pawn.getType().equals(possMove.getPawn().getType())) {
-                    if (possMove.getPawn() == pawn) {
-                        isThisAJumpPawn = true;
-                    }
-                    atLeastOneJump = true;
-                }
-            });
-
-            pawnAction(move, pawn, newX, newY, pawnsGroup);
-        });
-
+        setOnMouseReleasedImpl(pawn, pawnsGroup);
         return pawn;
     }
 
@@ -142,7 +99,7 @@ public class GameBoard {
      */
 
     private Move getPossibleMoveForPiece(Pawn pawn, int newX, int newY) {
-        if ((newX + newY) % 2 != 0 || gameboard[newX][newY].hasPawn() || whitePawnsLeft == 0 || redPawnsLeft == 0) {
+        if ((newX + newY) % 2 != 0 || gameboard[newX][newY].isPawn() || whitePawnsLeft == 0 || redPawnsLeft == 0) {
             return new Move(MoveType.INVALID);
         }
 
@@ -164,7 +121,7 @@ public class GameBoard {
             return new Move(MoveType.STEP);
         } else if (pawn.getType().equals(PawnType.RED_KING) || pawn.getType().equals(PawnType.WHITE_KING)
                 ? kingJumpCondition : pawnJumpCondition) {
-            if (gameboard[jumpedOverPawnX][jumpedOverPawnY].hasPawn() &&
+            if (gameboard[jumpedOverPawnX][jumpedOverPawnY].isPawn() &&
                     gameboard[jumpedOverPawnX][jumpedOverPawnY].getPawn().getType() != pawn.getType()) {
                 return new Move(MoveType.JUMP, gameboard[jumpedOverPawnX][jumpedOverPawnY].getPawn());
             }
@@ -281,5 +238,51 @@ public class GameBoard {
                 + "] to [" + newX + "][" + newY + "]");
 
         whiteTurn = !whiteTurn;
+    }
+
+    public void setOnMouseReleasedImpl(Pawn pawn, Group pawnsGroup){
+
+        pawn.setOnMouseReleased(e -> {
+            Move move;
+            isThisAJumpPawn = false;
+            atLeastOneJump = false;
+
+            //new x and y values representing the matrix values, not the pixels
+            int newX = toMatrixPosition(pawn.getLayoutX());
+            int newY = toMatrixPosition(pawn.getLayoutY());
+
+            //if the new position is not 'out' of the gameboard or it is the right player's turn
+            //we are looking for a possible move of the selected pawn and the new position
+            //if otherwise we do not do any valid move
+            if (!yourTurn(pawn) || (newX < 0 || newY < 0 || newX >= WIDTH || newY >= HEIGHT)) {
+                move = new Move(MoveType.INVALID);
+            } else {
+                move = getPossibleMoveForPiece(pawn, newX, newY);
+            }
+
+            //this list was created for the whole purpose of determining all movable pawns on the board
+            LinkedList<Move> possibleMoves = GameSearch.getAllPossibleMoves(gameboard);
+
+            //failed attempt in trying to make the player do a jump if any is available
+            String player = pawn.getType().equals(PawnType.RED_PAWN) || pawn.getType().equals(PawnType.RED_KING) ? "RED" : "WHITE";
+            System.out.println("Possible movable pawns for player " + pawn.getType());
+            possibleMoves.forEach(possMove -> {
+
+                if (player.equals("RED") && (possMove.getPawn().getType().equals(PawnType.RED_PAWN) ||
+                        possMove.getPawn().getType().equals(PawnType.RED_KING))) System.out.println(possMove);
+
+                if (player.equals("WHITE") && (possMove.getPawn().getType().equals(PawnType.WHITE_PAWN) ||
+                        possMove.getPawn().getType().equals(PawnType.WHITE_KING))) System.out.println(possMove);
+
+                if (possMove.getType().equals(MoveType.JUMP) && pawn.getType().equals(possMove.getPawn().getType())) {
+                    if (possMove.getPawn() == pawn) {
+                        isThisAJumpPawn = true;
+                    }
+                    atLeastOneJump = true;
+                }
+            });
+
+            pawnAction(move, pawn, newX, newY, pawnsGroup);
+        });
     }
 }

@@ -39,12 +39,12 @@ public class GameSearch {
         if (board[x][y].getPawn().getType().equals(PawnType.WHITE_PAWN)) {
 
             if (x - 1 >= 0 && y - 1 >= 0) {
-                if (!board[x - 1][y - 1].hasPawn())
+                if (!board[x - 1][y - 1].isPawn())
                     possibleStepMoves.add(new Move(MoveType.STEP, board[x][y].getPawn()));
             }
 
             if (x - 1 >= 0 && y + 1 <= 7) {
-                if (!board[x - 1][y + 1].hasPawn())
+                if (!board[x - 1][y + 1].isPawn())
                     possibleStepMoves.add(new Move(MoveType.STEP, board[x][y].getPawn()));
             }
         }
@@ -52,12 +52,12 @@ public class GameSearch {
         if (board[x][y].getPawn().getType().equals(PawnType.RED_PAWN)) {
 
             if (x + 1 <= 7 && y - 1 >= 0) {
-                if (!board[x + 1][y - 1].hasPawn())
+                if (!board[x + 1][y - 1].isPawn())
                     possibleStepMoves.add(new Move(MoveType.STEP, board[x][y].getPawn()));
             }
 
             if (x + 1 <= 7 && y + 1 <= 7) {
-                if (!board[x + 1][y + 1].hasPawn())
+                if (!board[x + 1][y + 1].isPawn())
                     possibleStepMoves.add(new Move(MoveType.STEP, board[x][y].getPawn()));
             }
         }
@@ -65,22 +65,22 @@ public class GameSearch {
         if (board[x][y].getPawn().getType().equals(PawnType.WHITE_KING) || board[x][y].getPawn().getType().equals(PawnType.RED_KING)) {
 
             if (x - 1 >= 0 && y - 1 >= 0) {
-                if (!board[x - 1][y - 1].hasPawn())
+                if (!board[x - 1][y - 1].isPawn())
                     possibleStepMoves.add(new Move(MoveType.STEP, board[x][y].getPawn()));
             }
 
             if (x - 1 >= 0 && y + 1 <= 7) {
-                if (!board[x - 1][y + 1].hasPawn())
+                if (!board[x - 1][y + 1].isPawn())
                     possibleStepMoves.add(new Move(MoveType.STEP, board[x][y].getPawn()));
             }
 
             if (x - 1 >= 0 && y - 1 >= 0) {
-                if (!board[x - 1][y - 1].hasPawn())
+                if (!board[x - 1][y - 1].isPawn())
                     possibleStepMoves.add(new Move(MoveType.STEP, board[x][y].getPawn()));
             }
 
             if (x - 1 >= 0 && y + 1 <= 7) {
-                if (!board[x - 1][y + 1].hasPawn())
+                if (!board[x - 1][y + 1].isPawn())
                     possibleStepMoves.add(new Move(MoveType.STEP, board[x][y].getPawn()));
             }
         }
@@ -94,14 +94,14 @@ public class GameSearch {
         if (board[x][y].getPawn().getType().equals(PawnType.WHITE_PAWN)) {
 
             if (x - 2 >= 0 && y - 2 >= 0) {
-                if (!board[x - 2][y - 2].hasPawn() && (board[x - 1][y - 1].hasPawn()))
+                if (!board[x - 2][y - 2].isPawn() && (board[x - 1][y - 1].isPawn()))
                     if((board[x - 1][y - 1].getPawn().getType().equals(PawnType.RED_PAWN)
                             || board[x - 1][y - 1].getPawn().getType().equals(PawnType.RED_KING)))
                         possibleJumpMoves.add(new Move(MoveType.JUMP, board[x][y].getPawn()));
             }
 
             if (x - 2 >= 0 && y + 2 <= 7) {
-                if (!board[x - 2][y + 2].hasPawn() && (board[x - 1][y +1].hasPawn()))
+                if (!board[x - 2][y + 2].isPawn() && (board[x - 1][y +1].isPawn()))
                     if((board[x - 1][y + 1].getPawn().getType().equals(PawnType.RED_PAWN)
                             || board[x - 1][y + 1].getPawn().getType().equals(PawnType.RED_KING)))
                         possibleJumpMoves.add(new Move(MoveType.JUMP, board[x][y].getPawn()));
@@ -111,14 +111,14 @@ public class GameSearch {
         if (board[x][y].getPawn().getType().equals(PawnType.RED_PAWN)) {
 
             if (x + 2 <= 7 && y - 2 >= 0) {
-                if (!board[x + 2][y - 2].hasPawn() && (board[x + 1][y - 1].hasPawn()))
+                if (!board[x + 2][y - 2].isPawn() && (board[x + 1][y - 1].isPawn()))
                     if((board[x + 1][y - 1].getPawn().getType().equals(PawnType.WHITE_PAWN)
                             || board[x + 1][y - 1].getPawn().getType().equals(PawnType.WHITE_KING)))
                         possibleJumpMoves.add(new Move(MoveType.JUMP, board[x][y].getPawn()));
             }
 
             if (x + 2 <= 7 && y + 2 <= 7) {
-                if (!board[x + 2][y + 2].hasPawn() && (board[x + 1][y + 1].hasPawn()))
+                if (!board[x + 2][y + 2].isPawn() && (board[x + 1][y + 1].isPawn()))
                     if((board[x + 1][y + 1].getPawn().getType().equals(PawnType.WHITE_PAWN)
                             || board[x + 1][y + 1].getPawn().getType().equals(PawnType.WHITE_KING)))
                         possibleJumpMoves.add(new Move(MoveType.JUMP, board[x][y].getPawn()));
@@ -129,14 +129,14 @@ public class GameSearch {
 
             if (x - 2 > -0) {
                 if (y - 2 >= 0) {
-                    if (!board[x - 2][y - 2].hasPawn() && (board[x - 1][y - 1].hasPawn()))
+                    if (!board[x - 2][y - 2].isPawn() && (board[x - 1][y - 1].isPawn()))
                         if((board[x - 1][y - 1].getPawn().getType().equals(PawnType.RED_PAWN)
                                 || board[x - 1][y - 1].getPawn().getType().equals(PawnType.RED_KING)))
                             possibleJumpMoves.add(new Move(MoveType.JUMP, board[x][y].getPawn()));
                 }
 
                 if (y + 2 <= 7) {
-                    if (!board[x - 2][y + 2].hasPawn() && (board[x - 1][y + 1].hasPawn()))
+                    if (!board[x - 2][y + 2].isPawn() && (board[x - 1][y + 1].isPawn()))
                         if((board[x - 1][y + 1].getPawn().getType().equals(PawnType.RED_PAWN)
                                 || board[x - 1][y + 1].getPawn().getType().equals(PawnType.RED_KING)))
                             possibleJumpMoves.add(new Move(MoveType.JUMP, board[x][y].getPawn()));
@@ -148,14 +148,14 @@ public class GameSearch {
 
             if (x + 2 <= 7) {
                 if (y - 2 >= 0) {
-                    if (!board[x + 2][y - 2].hasPawn() && (board[x + 1][y - 1].hasPawn()))
+                    if (!board[x + 2][y - 2].isPawn() && (board[x + 1][y - 1].isPawn()))
                         if((board[x + 1][y - 1].getPawn().getType().equals(PawnType.WHITE_PAWN)
                                 || board[x + 1][y - 1].getPawn().getType().equals(PawnType.WHITE_KING)))
                             possibleJumpMoves.add(new Move(MoveType.JUMP, board[x][y].getPawn()));
                 }
 
                 if (y + 2 <= 7) {
-                    if (!board[x + 2][y + 2].hasPawn() && (board[x + 1][y + 1].hasPawn()))
+                    if (!board[x + 2][y + 2].isPawn() && (board[x + 1][y + 1].isPawn()))
                         if((board[x + 1][y + 1].getPawn().getType().equals(PawnType.WHITE_PAWN)
                                 || board[x + 1][y + 1].getPawn().getType().equals(PawnType.WHITE_KING)))
                             possibleJumpMoves.add(new Move(MoveType.JUMP, board[x][y].getPawn()));

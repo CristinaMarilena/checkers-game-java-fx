@@ -15,14 +15,10 @@ public class BoardSquare extends Rectangle {
     private Pawn pawn;
 
     public BoardSquare(Boolean black, int x, int y) {
-        super.setWidth(CheckersApp.SQUARE_SIZE);
-        super.setHeight(CheckersApp.SQUARE_SIZE);
-        super.setFill(black ? Color.BLACK : Color.WHITESMOKE);
-        super.relocate(x * CheckersApp.SQUARE_SIZE, y * CheckersApp.SQUARE_SIZE);
-    }
-
-    public boolean hasPawn() {
-        return pawn != null;
+        setWidth(CheckersApp.SQUARE_SIZE);
+        setHeight(CheckersApp.SQUARE_SIZE);
+        setFill(black ? Color.BLACK : Color.WHITESMOKE);
+        relocate(x * CheckersApp.SQUARE_SIZE, y * CheckersApp.SQUARE_SIZE);
     }
 
     public Pawn getPawn() {
@@ -31,5 +27,9 @@ public class BoardSquare extends Rectangle {
 
     public void setPawn(Pawn pawn) {
         this.pawn = pawn;
+    }
+
+    public boolean isPawn() {
+        return pawn != null;
     }
 }
